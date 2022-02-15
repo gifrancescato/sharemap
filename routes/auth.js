@@ -26,7 +26,7 @@ router.get('/signup', (req, res, next) => {
   	
     // do we already have a user with that username in the db?
 
-    User.findOne({ username: username }).then((userFromDB) => {
+    User.findOne({ username : username }).then((userFromDB) => {
       if (userFromDB !== null) {
         res.render('signup', { message: 'Exsisting username' });
         return;
@@ -36,7 +36,7 @@ router.get('/signup', (req, res, next) => {
   		
         // create the user
 
-        User.create({ username: username, password: hash })
+        User.create({ username : username, password : hash })
           .then((createdUser) => {
             res.redirect('/login');
           })
