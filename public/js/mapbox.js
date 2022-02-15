@@ -28,11 +28,11 @@ const coords = [
 ];
 
 coords.forEach(coord => {
-    addMarker(coord)
+    addMarkerFromDB(coord)
 }); 
 
  // function to display the existing markers from DB 
-function addMarker(coord) {
+function addMarkerFromDB(coord) {
     new mapboxgl.Marker({
     color: 'red',
     draggable: true
@@ -47,18 +47,18 @@ function addMarker(coord) {
 // })
 
 
-// // function to add marker on click
-// function addMarker(event) {
-//     const coords = event.lngLat;
-//     console.log(coords);
-//     // set an existing marker on the map
-//     new mapboxgl.Marker({
-//     color: 'red',
-//     draggable: true
-// }).setLngLat(coords)
-// .addTo(map)
-// .on('dragend', event => console.log(event.target._lngLat))
-// };
+// function to add marker on click
+function addMarker(event) {
+    const coords = event.lngLat;
+    console.log(coords);
+    // set an existing marker on the map
+    new mapboxgl.Marker({
+    color: 'red',
+    draggable: true
+}).setLngLat(coords)
+.addTo(map)
+.on('dragend', event => console.log(event.target._lngLat))
+};
 
 
 
