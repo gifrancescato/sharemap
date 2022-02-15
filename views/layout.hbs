@@ -5,6 +5,12 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+       <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+       <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+    
+
+
       <title>{{title}}</title>
       <link rel="stylesheet" href="/stylesheets/style.css" />
    </head>
@@ -12,6 +18,9 @@
    <body>
 
       {{{body}}}
+
+       <div id='map' style='width: 440px; height: 330px;'></div>
+       <script src="/js/mapbox.js"></script>
 
       <script src="/js/script.js"></script>
    </body>
