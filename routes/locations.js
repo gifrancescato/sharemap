@@ -105,7 +105,7 @@ router.get('/location/:id', (req, res, next) => {
   const loggedInUser = req.user;
   Location.findById(req.params.id)
     .then((location) => {
-      res.render('show.hbs', { spaeti, user: loggedInUser });
+      res.render('show.hbs', { location, user: loggedInUser });
     })
     .catch((err) => {
       next(err);
@@ -116,7 +116,7 @@ router.get('/location/:id', (req, res, next) => {
 router.get('/location/edit/:id', (req, res, next) => {
 
 	const locationId = req.params.id;
-	Spaeti.findById(locationId)
+	locationId.findById(locationId)
 		.then(locationFromDB => {
       
 			res.render('locationEdit', { location: locationFromDB });
@@ -137,7 +137,7 @@ router.post('/location/edit/:id', (req, res, next) => {
 	}, { new: true })
 		.then(updatedLocation => {
 			
-			res.redirect(`/spaeti/${updatedLocation._id}`);
+			res.redirect(`/location/${updatedLocation._id}`);
 		})
 		.catch(err => {
 			next(err);
@@ -150,9 +150,9 @@ router.post('/location/:id/reviews', (req, res, next) => {
     const locationId = req.params.id;
     const { text } = req.body;
     Location.findByIdAndUpdate(locationId, { $push: { reviews: { user: user, text: text } } }, { new: true })
-      .then(spaetiFromDB => {
+      .then(locationFromDB => {
         
-        // redirect to the detail view of this book
+        // redirect to the detail view of this location
         (res.redirect(`/location/${locationId}`));
       })
       .catch(err => {
