@@ -131,9 +131,9 @@ map.on('click', addMarker);
 axios.get('/location/')
   .then(async res => {
     //console.log(res)
-    const spaetis = res.data
+    const locations = res.data
     console.log(res.data);
-    for (let i = 0; i < spaetis.length; i++) {
+    for (let i = 0; i < locations.length; i++) {
       const coord = [locations[i].latitude, locations[i].longitude]
       await addMarker2(coord)
      }
