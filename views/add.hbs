@@ -1,0 +1,71 @@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<div>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Find Locations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/locations">Show All Locations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li> 
+                </ul>
+            </div>
+            </div>
+        </nav>
+</div>
+
+<div class="container md p-3">
+  <div class="card view-card">
+    <div class="card-header">
+      <h2 class="card-title">Add a new location</h2>
+    </div>
+
+<form action='/location' method='POST'>
+  <div class="container md p-3">
+  {{!-- <label for='name'>Name: </label> --}}
+  {{!-- <input id="locationName" type='text' name='name' id='name' /> --}}
+  
+
+  <div class="container md p-3">
+    <div class="card">
+  {{!-- <label class="card-title" for='address' name="address">Address: </label> --}}
+  {{!-- <input type="text" id='name' placeholder="name" name="name" value="{{name}}"> --}}
+  <input type="text" id="street" placeholder="Street" name="street" value="{{street}}">
+  <input type="text" id="city" placeholder="City" name="city" value="{{city}}">
+  </div>
+  </div>
+
+
+  <div class="container md p-3">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Add a review</h2>
+    </div>
+
+
+  <p id='addReview' class="new-button">Add</p>
+ 
+  <div class="add-btn">
+    <button style="width: fit-content;" class="btn btn-dark btn-lg" onclick=addLocation(event)>Add this location</button>
+  </div>
+
+  </form>
+  
+  <script>
+//{{!-- let locationName = document.getElementById('locationName').value --}}
+
+    function addLocation(event) {
+      event.preventDefault()
+      axios.post('/location', {
+        //name: (document.getElementById('locationName').value),
+        street: document.querySelector('#street').value,
+        city: document.querySelector('#city').value,
+      })
+      .then(createdLocation => {
+        console.log(createdLocation)
+       // window.location.replace(`https://sharemap.herokuapp.com/location/${createdLocation.data._id}`)
+         window.location.replace(`http://localhost:3000/location/${createdLocation.data._id}`)
+      })
+    }
+  </script>

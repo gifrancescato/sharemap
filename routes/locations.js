@@ -8,12 +8,12 @@ const client = new MapboxClient(accessToken);
 
 const {loginCheck}= require('./middleware');
 
-router.get('/new', (req, res, next) => {
+router.get('/add', (req, res, next) => {
     Location.find().then((locationFromDB) => {
         const plz= req.query.plz || "";
         const city = req.query.city || "";
         const street = req.query.street || "";
-        res.render('new', { locations: locationFromDB, plz: plz, city: city, street: street});
+        res.render('add', { locations: locationFromDB, plz: plz, city: city, street: street});
     });
 });
 
@@ -30,7 +30,7 @@ router.get('/locations', (req, res, next) => {
       });
   });
 
-  router.get('/locations', (req, res, next) => {
+  router.get('/location', (req, res, next) => {
     Location.find()
       .then((locationFromDB) => {
         
@@ -45,7 +45,6 @@ router.get('/locations', (req, res, next) => {
   router.post('/locations', (req, res, next) => {
     const {
       name,
-      imageUrl,
       reviews,
       street,
       city,
@@ -74,7 +73,6 @@ router.get('/locations', (req, res, next) => {
       }
       Location.create({
         name: name,
-        imageUrl: imageUrl,
         // imgPath: imgPath,
         // imgName: imgName,
         location: location,
@@ -128,12 +126,11 @@ router.get('/location/edit/:id', (req, res, next) => {
 
 router.post('/location/edit/:id', (req, res, next) => {
 	const locationId = req.params.id;
-	const { name, image } = req.body;
+	const { name } = req.body;
 	
 
 	Location.findByIdAndUpdate(locationId, {
 		name: name,
-		image: image,
 	}, { new: true })
 		.then(updatedLocation => {
 			
