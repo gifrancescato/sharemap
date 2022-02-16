@@ -1,5 +1,5 @@
 const router= require('express').Router();
-const Location= require('../models/Locations');
+const Location= require('../models/Location');
 const User= require('../models/User');
 
 const MapboxClient = require('mapbox');
@@ -116,7 +116,7 @@ router.get('/location/:id', (req, res, next) => {
 router.get('/location/edit/:id', (req, res, next) => {
 
 	const locationId = req.params.id;
-	locationId.findById(locationId)
+	Location.findById(locationId)
 		.then(locationFromDB => {
       
 			res.render('locationEdit', { location: locationFromDB });
@@ -152,7 +152,7 @@ router.post('/location/:id/reviews', (req, res, next) => {
     Location.findByIdAndUpdate(locationId, { $push: { reviews: { user: user, text: text } } }, { new: true })
       .then(locationFromDB => {
         
-        // redirect to the detail view of this location
+        // redirect to the detail view of this book
         (res.redirect(`/location/${locationId}`));
       })
       .catch(err => {
