@@ -5,12 +5,14 @@ const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
     center: [13.404954, 52.520008], // starting position [lng, lat]
-    zoom: 9 // starting zoom
+    zoom: 9,
+    // language: eng // starting zoom
 });
 
 map.addControl(new MapboxGeocoder({
 accessToken: mapboxgl.accessToken,
-bbox: [-74.390249, 40.414685, -73.519390, 40.976805] ,
+
+// bbox: [-74.390249, 40.414685, -73.519390, 40.976805] ,
 zoom: 425,}));
 
 // const nav = new mapboxgl.NavigationControl();
@@ -100,7 +102,9 @@ const long = coordinates.lng;
 map.addControl(
     new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
+        language: 'de-DE',
         mapboxgl: mapboxgl,
+        // language: english
     })
 );
 
@@ -127,7 +131,7 @@ mapboxClient.geocoding
 });
 
     // remove a marker
-    marker.getElement().addEventListener('clcik', () => {
+    marker.getElement().addEventListener('click', () => {
         marker.remove();
     });
 };

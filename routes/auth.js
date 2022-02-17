@@ -47,25 +47,67 @@ router.get('/signup', (req, res, next) => {
     });
   });
   
-  router.get('/login', (req, res, next) => {
-    res.render('login');
-  });
+  router.post('/login', (req, res, next) => {
+	const { username, password } = req.body
+
+	// do we have a user with that username
+	User.findOne({ username: username })
+		.then(userFromDB => {
+			console.log('user: ', userFromDB)
+			if (userFromDB === null) {
+				// this user does not exist
+				res.render('login', { message: 'Invalid credentials' })
+				return
+			}
+			// username is correct 
+			// we check the password against the hash in the database
+			if (bcrypt.compareSync(password, userFromDB.password)) {
+				console.log('authenticated')
+				// it matches -> credentials are correct
+				// we log the user in
+				// req.session.<some key (normally user)>
+				req.session.user = userFromDB
+				console.log(req.session)
+				// redirect to the profile page
+				res.redirect('/profile')
+			}
+		})
+});
+
+router.get('/profile', (req, res) => res.render('profile'));
+
+
+router.get('/logout', (req, res, next) => {
+	// to log the user out we destroy the session
+	req.session.destroy()
+	res.render('index')
+});
+
+
+
+module.exports = router;
+
+
+//   router.get('/login', (req, res, next) => {
+//     res.render('login');
+//   });
   
-  router.post(
-    '/login',
-    passport.authenticate('local', {
-      successRedirect: '/profile',
-      failureRedirect: 'login',
-      passReqToCallback: true,
-    })
-  );
+//   router.post(
+//     '/login',
+//     // res.render('profile'),
+//     passport.authenticate('local', {
+//       successRedirect: '/profile',
+//       failureRedirect: 'login',
+//       passReqToCallback: true,
+//     })
+//   );
   
   
-  //logout
-  router.get('/logout', (req, res, next) => {
-    req.logout();
-    req.session.destroy();
-    res.redirect('/');
-  })
+//   //logout
+//   router.get('/logout', (req, res, next) => {
+//     req.logout();
+//     req.session.destroy();
+//     res.redirect('/');
+//   })
   
-  module.exports = router;
+//   module.exports = router;
