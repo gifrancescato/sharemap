@@ -15,8 +15,8 @@ accessToken: mapboxgl.accessToken,
 // bbox: [-74.390249, 40.414685, -73.519390, 40.976805] ,
 zoom: 425,}));
 
-// const nav = new mapboxgl.NavigationControl();
-// map.addControl(nav, 'top-left');
+ const nav = new mapboxgl.NavigationControl();
+ map.addControl(nav, 'top-left');
 
 // set a popup
 const popup = new mapboxgl.Popup({
