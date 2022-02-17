@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
-const passport = require('passport');
+// const passport = require('passport');
 
 
 router.get('/signup', (req, res, next) => {
@@ -47,10 +47,14 @@ router.get('/signup', (req, res, next) => {
     });
   });
   
+  router.get('/login', (req, res, next) => {
+	res.render('login')
+});
+
   router.post('/login', (req, res, next) => {
 	const { username, password } = req.body
+    console.log(req.body)
 
-	// do we have a user with that username
 	User.findOne({ username: username })
 		.then(userFromDB => {
 			console.log('user: ', userFromDB)
@@ -59,22 +63,19 @@ router.get('/signup', (req, res, next) => {
 				res.render('login', { message: 'Invalid credentials' })
 				return
 			}
-			// username is correct 
-			// we check the password against the hash in the database
+		
 			if (bcrypt.compareSync(password, userFromDB.password)) {
 				console.log('authenticated')
-				// it matches -> credentials are correct
-				// we log the user in
-				// req.session.<some key (normally user)>
+				
 				req.session.user = userFromDB
 				console.log(req.session)
-				// redirect to the profile page
-				res.redirect('/profile')
+				res.render('profile')
 			}
-		})
+	// 	})
 });
+})
 
-router.get('/profile', (req, res) => res.render('profile'));
+// router.get('/profile', (req, res) => res.render('profile'));
 
 
 router.get('/logout', (req, res, next) => {
