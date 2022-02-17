@@ -1,15 +1,25 @@
- body {
+  body {
   padding: 0;
   margin: 0;
   height: 100%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: linear-gradient(#ccf2f5, #4fd3eb);
-  background-repeat: no-repeat;
-  background-size: 100%;
+  background-repeat:inherit;
+  background-size: 100%; 
 }
 
 a {
   color: rgb(189, 194, 124);
+}
+
+ .homeContainer, #map, .navbar, form, h3 {
+    margin: auto;
+    width: 90%;
+    padding: auto;
+}
+
+form {
+  margin-bottom: 20px;
 }
 
 h1 {
@@ -78,22 +88,22 @@ header {
 }
 
 .geocoder {
-  /* position: absolute; */
-  z-index: 1;
+   position: absolute; 
+   z-index: 1;
   width: 0%;
   left: 0%;
-  /* margin-left: 0%; */
+   margin-left: 0%; 
   margin: auto;
   top: 0px;
   }
-  .mapboxgl-ctrl-geocoder {
-  min-width: 0%;
-  display:none;
-  }
+   /* .mapboxgl-ctrl-geocoder {
+  /*min-width: 0%;
+  /*display:none;
+  }  */
 
   .mapboxgl-ctrl-geocoder--input {
     min-width: 0%;
-    display:none;
+   /* display:none; */
   }
 
 .showHeading {
@@ -162,4 +172,4 @@ h3 {
   padding: 2px;
   margin-bottom: 10px;
   border: 2px solid white;
-} 
+}   
