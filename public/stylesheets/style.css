@@ -30,9 +30,10 @@ background-repeat:inherit;
 
 form {
   margin-bottom: 20px;
+  color: #d3b04d;
 }
 
-h1, a {
+h1, a, .card-header, form {
   font: 60px, Helvetica;
   color: #d3b04d;
   text-align: center;
@@ -155,6 +156,7 @@ padding: 20px 0
 
 h3 {
   padding: 20px 0;
+  
 }
 
 .card-title2 {
