@@ -3,7 +3,8 @@ console.log('mapbox');
 mapboxgl.accessToken = 'pk.eyJ1IjoibGF2YXBpZXMiLCJhIjoiY2t6bXFmenJvNDZtdTMwbzEyMGtocmFyeSJ9.fZ0tppeLAusfK9l8yfgZFA';
 const map = new mapboxgl.Map({
     container: 'map', // container ID
-    style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    // style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    style: 'mapbox://styles/lavapies/ckzrhpoud000j14lkj1c7n56n', // style URL
     center: [13.404954, 52.520008], // starting position [lng, lat]
     zoom: 9,
     // language: eng // starting zoom
