@@ -10,11 +10,11 @@ const map = new mapboxgl.Map({
     // language: eng // starting zoom
 });
 
-// map.addControl(new MapboxGeocoder({
-// accessToken: mapboxgl.accessToken,
+map.addControl(new MapboxGeocoder({
+accessToken: mapboxgl.accessToken,
 
-// // bbox: [-74.390249, 40.414685, -73.519390, 40.976805] ,
-// zoom: 5,}));
+// bbox: [-74.390249, 40.414685, -73.519390, 40.976805] ,
+zoom: 5,}));
 
  const nav = new mapboxgl.NavigationControl();
  map.addControl(nav, 'top-left');
