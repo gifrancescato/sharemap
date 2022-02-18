@@ -52,7 +52,7 @@ coords.forEach(coord => {
  // function to display the existing markers from DB 
 function addMarkerFromDB(coord) {
     new mapboxgl.Marker({
-    color: 'red',
+    color: '#2abe88',
     draggable: true
 }).setLngLat(coord)
 .addTo(map)
@@ -84,7 +84,7 @@ function addMarker(event) {
 
     console.log(coordinates);
     marker = new mapboxgl.Marker({
-    color: 'red',
+    color: '#2abe88',
     draggable: true
 }).setLngLat(coordinates)
 .addTo(map)
@@ -101,13 +101,13 @@ const lat = coordinates.lat;
 const long = coordinates.lng;    
 
 // add geocoder
-map.addControl(
-    new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        // language: 'de-DE',
-        mapboxgl: mapboxgl,
-    })
-);
+// map.addControl(
+//     new MapboxGeocoder({
+//         accessToken: mapboxgl.accessToken,
+//         // language: 'de-DE',
+//         mapboxgl: mapboxgl,
+//     })
+// );
 
 mapboxClient.geocoding
 .reverseGeocode({
