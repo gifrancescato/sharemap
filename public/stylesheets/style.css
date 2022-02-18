@@ -21,12 +21,20 @@ background-repeat:inherit;
   margin: auto;
 }
 
+.nav-item-login {
+  font: 60px, Helvetica;
+  color: #d3b04d;
+}
+
 #logo-container {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
 }
 
+.nav-link-yet {
+  color: #d3b04d;
+}
 
 form {
   margin-bottom: 20px;
@@ -156,7 +164,8 @@ padding: 20px 0
 
 h3 {
   padding: 20px 0;
-  
+  text-font: 40px, Helvetica;
+  color: #d3b04d;
 }
 
 .card-title2 {

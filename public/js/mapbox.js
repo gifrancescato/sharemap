@@ -5,16 +5,16 @@ const map = new mapboxgl.Map({
     container: 'map', // container ID
     // style: 'mapbox://styles/mapbox/streets-v11', // style URL
     style: 'mapbox://styles/lavapies/ckzrhpoud000j14lkj1c7n56n', // style URL
-    center: [13.404954, 52.520008], // starting position [lng, lat]
-    zoom: 9,
+    center: [10.122195755858513, 47.35044], // starting position [lng, lat]
+    zoom: 3,
     // language: eng // starting zoom
 });
 
-map.addControl(new MapboxGeocoder({
-accessToken: mapboxgl.accessToken,
+// map.addControl(new MapboxGeocoder({
+// accessToken: mapboxgl.accessToken,
 
-// bbox: [-74.390249, 40.414685, -73.519390, 40.976805] ,
-zoom: 425,}));
+// // bbox: [-74.390249, 40.414685, -73.519390, 40.976805] ,
+// zoom: 5,}));
 
  const nav = new mapboxgl.NavigationControl();
  map.addControl(nav, 'top-left');
@@ -40,8 +40,9 @@ map.on('click', addMarker);
 
 // exapmle coords for test purposes - TO BE DELETED
 const coords = [
-    [13.405, 52.52],
-    [13.6, 52.6]
+    [12.6712, 38.1131],
+    [13.9688, 38.0322],
+    [12.6737, 37.5611],
 ];
 
 coords.forEach(coord => {
@@ -103,9 +104,8 @@ const long = coordinates.lng;
 map.addControl(
     new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
-        language: 'de-DE',
+        // language: 'de-DE',
         mapboxgl: mapboxgl,
-        // language: english
     })
 );
 
